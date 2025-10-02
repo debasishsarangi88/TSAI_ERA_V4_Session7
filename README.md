@@ -225,14 +225,6 @@ The model achieves state-of-the-art performance on CIFAR-10 while maintaining st
 | Standard ResNet-18 | 11,173,962 | ~90% | 124,155 params/accuracy |
 | MobileNetV2 | 2,237,160 | ~90% | 24,857 params/accuracy |
 
-## 🐛 Bug Fixes
-
-### EMA Implementation Fix
-- **Issue**: Exponential Moving Average was incorrectly used for model selection
-- **Impact**: Caused incorrect model saving and low reported accuracy
-- **Fix**: Model selection now uses regular test accuracy instead of EMA
-- **Result**: Correctly reports 87.42% accuracy instead of 12.08%
-
 ## 📚 References
 
 1. Zhang, H., et al. "mixup: Beyond Empirical Risk Minimization." ICLR 2018.
