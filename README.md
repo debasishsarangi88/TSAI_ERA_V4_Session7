@@ -151,10 +151,27 @@ pip install torch torchvision albumentations numpy matplotlib tqdm
 ```
 
 ### Running the Model
+
+#### Option 1: Original Notebook (Colab Compatible)
 1. Open `optimized_cifar_10_200k_model.ipynb` in Jupyter Notebook or Google Colab
 2. Run all cells sequentially
 3. The model will automatically download CIFAR-10 dataset and begin training
 4. Training progress and results will be displayed in real-time
+
+#### Option 2: Modular Version (Recommended for Development)
+1. Open `optimized_cifar_10_200k_model_modular.ipynb` in Jupyter Notebook
+2. Run all cells sequentially
+3. Uses modular Python files for better code organization and reusability
+4. Same functionality as original notebook but with improved maintainability
+
+#### Option 3: Command Line Testing
+```bash
+# Test modularity
+python test_modularity.py
+
+# Run individual modules (for development)
+python -c "from models import OptimizedCIFAR10Net200K; print('Model imported successfully')"
+```
 
 ### Expected Results
 - **Training Time**: ~0.23 hours on GPU
@@ -175,15 +192,72 @@ For complete training details including epoch-by-epoch metrics, see [`training_l
 
 ```
 Session7/
-├── optimized_cifar_10_200k_model.ipynb    # Main implementation notebook
-├── best_model_200k.pth                    # Trained model weights
-├── training_results_200k.json            # Training results and metrics
-├── training_log.txt                      # Detailed training log with epoch-by-epoch results
-├── Result.png                            # Training visualization
-├── Network_Architecture.png              # Network architecture diagram
-├── pyproject.toml                        # Project dependencies
-├── uv.lock                              # Dependency lock file
-└── README.md                            # This documentation
+├── optimized_cifar_10_200k_model.ipynb           # Original Colab notebook (preserved)
+├── optimized_cifar_10_200k_model_modular.ipynb   # Modular version notebook
+├── config.py                                     # Configuration parameters
+├── models.py                                     # Neural network architectures
+├── augmentation.py                               # Data augmentation techniques
+├── training.py                                   # Training functions and utilities
+├── utils.py                                      # Utility functions and helpers
+├── test_modularity.py                            # Modularity test suite
+├── best_model_200k.pth                          # Trained model weights
+├── training_results_200k.json                   # Training results and metrics
+├── training_log.txt                             # Detailed training log with epoch-by-epoch results
+├── Result.png                                   # Training visualization
+├── Network_Architecture.png                     # Network architecture diagram
+├── pyproject.toml                               # Project dependencies
+├── uv.lock                                     # Dependency lock file
+└── README.md                                   # This documentation
+```
+
+## 🏗️ Modular Architecture
+
+The project now features a clean, modular architecture that separates concerns and improves maintainability:
+
+### 📦 Module Structure
+
+#### `config.py` - Configuration Management
+- Centralized configuration for all hyperparameters
+- Easy to modify training settings, model architecture, and augmentation parameters
+- Environment-specific configurations (device, seeds, paths)
+
+#### `models.py` - Neural Network Architectures
+- `OptimizedCIFAR10Net200K`: Main model class
+- `EfficientBlock`: Depthwise separable convolution blocks
+- `DepthwiseSeparableConv2d`: Parameter-efficient convolution layer
+- Utility functions for parameter counting and receptive field calculation
+
+#### `augmentation.py` - Data Augmentation
+- `MixUp`, `CutMix`, `RICAP`: Advanced augmentation techniques
+- Albumentations pipeline configuration
+- Modular augmentation application system
+
+#### `training.py` - Training Pipeline
+- `train_model_advanced`: Main training function with EMA and early stopping
+- `LabelSmoothingCrossEntropy`: Advanced loss function
+- `EMA`: Exponential Moving Average implementation
+- Test Time Augmentation (TTA) functions
+
+#### `utils.py` - Utility Functions
+- Device detection and seed management
+- Data loading and preprocessing
+- Visualization and result saving functions
+- Training summary and analysis tools
+
+### 🔧 Benefits of Modular Design
+
+1. **Maintainability**: Easy to modify individual components without affecting others
+2. **Reusability**: Modules can be imported and used in other projects
+3. **Testability**: Each module can be tested independently
+4. **Scalability**: Easy to add new models, augmentations, or training techniques
+5. **Configuration**: Centralized parameter management
+6. **Documentation**: Clear separation of concerns with focused documentation
+
+### 🧪 Testing
+
+Run the modularity test suite to verify all components work correctly:
+```bash
+python test_modularity.py
 ```
 
 ## 🔬 Technical Features
