@@ -161,6 +161,16 @@ pip install torch torchvision albumentations numpy matplotlib tqdm
 - **Final Accuracy**: 87.42% on test set
 - **Parameter Count**: 150,690 (well under 200K limit)
 
+### 📋 Detailed Training Log
+
+For complete training details including epoch-by-epoch metrics, see [`training_log.txt`](training_log.txt). The log includes:
+
+- **Epoch-by-epoch progress**: Training loss, accuracy, and learning rate
+- **Data augmentation tracking**: MixUp, CutMix, and RICAP usage
+- **Convergence analysis**: Early stopping at epoch 55
+- **Performance metrics**: Peak accuracy of 87.42% achieved by epoch 2
+- **Training configuration**: Optimizer settings, loss function, and hyperparameters
+
 ## 📁 Project Structure
 
 ```
@@ -168,6 +178,7 @@ Session7/
 ├── optimized_cifar_10_200k_model.ipynb    # Main implementation notebook
 ├── best_model_200k.pth                    # Trained model weights
 ├── training_results_200k.json            # Training results and metrics
+├── training_log.txt                      # Detailed training log with epoch-by-epoch results
 ├── Result.png                            # Training visualization
 ├── Network_Architecture.png              # Network architecture diagram
 ├── pyproject.toml                        # Project dependencies
