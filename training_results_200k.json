@@ -1,0 +1,19 @@
+{
+  "model_name": "OptimizedCIFAR10Net200K",
+  "architecture": "Depthwise Separable Convolutions",
+  "channel_progression": "3\u219220\u219220\u219240\u219280\u2192160",
+  "total_parameters": 150690,
+  "target_parameters": 150690,
+  "receptive_field": 67,
+  "target_rf": 67,
+  "best_train_accuracy": 54.756,
+  "best_test_accuracy": 87.42,
+  "peak_test_accuracy": 84.08,
+  "tta_accuracy": 47.24,
+  "training_time_hours": 0.23438749134540557,
+  "parameter_constraint_met": true,
+  "rf_constraint_met": true,
+  "target_achieved": true,
+  "ema_bug_fixed": true,
+  "notes": "EMA bug was fixed - model selection now uses correct test accuracy"
+}
