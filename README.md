@@ -33,6 +33,12 @@ A highly parameter-efficient CNN designed to achieve >85% accuracy while maintai
 - **Input Size**: 32×32×3 (RGB images)
 - **Architecture**: Depthwise separable convolutions with optimized channel progression
 
+#### Network Architecture Visualization
+
+![Network Architecture](Network_Architecture.png)
+
+*Complete network architecture showing the optimized design with 150,690 parameters*
+
 #### Network Structure
 ```
 Input (32×32×3)
@@ -163,6 +169,7 @@ Session7/
 ├── best_model_200k.pth                    # Trained model weights
 ├── training_results_200k.json            # Training results and metrics
 ├── Result.png                            # Training visualization
+├── Network_Architecture.png              # Network architecture diagram
 ├── pyproject.toml                        # Project dependencies
 ├── uv.lock                              # Dependency lock file
 └── README.md                            # This documentation
